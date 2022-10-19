@@ -1,11 +1,16 @@
-from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseNotAllowed, JsonResponse
+from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseNotAllowed, JsonResponse, HttpRequest
 from django.views.decorators.csrf import csrf_exempt
 import json
 from json.decoder import JSONDecodeError
 from .models import Hero
 
-# def index(request):
-#     return HttpResponse('Hello, world!')
+def index(request: HttpRequest):
+    if 'visit_count' not in request.session:
+        request.session['visit_count'] = 1
+    else :
+        request.session['visit_count'] += 1
+    
+    return HttpResponse(f"Hello, world! you visited {request.session['visit_count']} times.")
 
 def id(request, id):
     return HttpResponse(f'Your id is {id}!')
