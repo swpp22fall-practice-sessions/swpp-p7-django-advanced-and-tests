@@ -2,10 +2,15 @@ from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseNotAll
 from django.views.decorators.csrf import csrf_exempt
 import json
 from json.decoder import JSONDecodeError
+from django.views.decorators.csrf import ensure_csrf_cookie
 from .models import Hero
 
-# def index(request):
-#     return HttpResponse('Hello, world!')
+def index(request):
+    if 'visit_count' not in request.session:
+        request.session['visit_count'] = 1
+    else:
+        request.session['visit_count'] += 1
+    return HttpResponse('Hello, World! You visited {} times.\n'.format(request.session['visit_count']))
 
 def id(request, id):
     return HttpResponse(f'Your id is {id}!')
@@ -51,3 +56,10 @@ def hero_info(request, id):
         return JsonResponse(response_dict, status=200)
     else:
         return HttpResponseNotAllowed(['GET', 'PUT'])
+
+@ensure_csrf_cookie
+def token(request):
+    if request.method == 'GET':
+        return HttpResponse(status=204)
+    else:
+        return HttpResponseNotAllowed(['GET'])
