@@ -51,3 +51,10 @@ def hero_info(request, id):
         return JsonResponse(response_dict, status=200)
     else:
         return HttpResponseNotAllowed(['GET', 'PUT'])
+
+def index(request):
+    if 'visit_count' not in request.session:
+        request.session['visit_count']=1
+    else:
+        request.session['visit_count']+=1
+    return HttpResponse('Hello, world! You visited {} times.\n'.format(request.session['visit_count']))   
