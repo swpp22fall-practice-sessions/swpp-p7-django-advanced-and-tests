@@ -1,6 +1,8 @@
 # env
 /django-env/
 
+toh/toh/__pycache__/*
+toh/hero/__pycache__/*
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
