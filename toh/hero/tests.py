@@ -1,3 +1,4 @@
+from http import client
 from pydoc import cli
 from django.test import TestCase, Client
 from .models import Hero
@@ -17,4 +18,10 @@ class HeroTestCase(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertIn('1', response.content.decode())
-
+    def test_response_request(self) -> None:
+        client = Client()
+        first_response = client.get('/hero/')
+        second_response = client.get('/hero/')
+    
+        self.assertIn('1', first_response.content.decode())
+        self.assertIn('2', second_response.content.decode())
