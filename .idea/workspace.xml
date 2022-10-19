@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="63f58a8b-a9fb-4bf6-aea1-56c1d9e971ad" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/toh/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/toh/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toh/hero/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/toh/hero/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toh/hero/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/toh/hero/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toh/hero/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/toh/hero/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toh/hero/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/toh/hero/views.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2GLhj94IwflkKZAWaT8E7zZfIw8" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/yblee2001/swpp/swpp-p7-django-advanced-and-tests&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="63f58a8b-a9fb-4bf6-aea1-56c1d9e971ad" name="Changes" comment="" />
+      <created>1666173904038</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1666173904038</updated>
+      <workItem from="1666173906056" duration="2937000" />
+      <workItem from="1666176861909" duration="364000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
