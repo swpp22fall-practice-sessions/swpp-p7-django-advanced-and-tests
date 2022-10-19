@@ -8,12 +8,13 @@ class HeroTestCase(TestCase):
         Hero.objects.create(name='Batman')
         Hero.objects.create(name='Ironman')
 
-    def test_hero_count(self):
-        self.assertEqual(Hero.objects.all().count(), 3)
-
-    def test_hero_id(self):
+    def test_visit_count(self):
         client = Client()
-        response = client.get('/hero/10/')
 
+        response = client.get('/hero/')
         self.assertEqual(response.status_code, 200)
-        self.assertIn('10', response.content.decode())
+        self.assertIn('1', response.content.decode())
+
+        response = client.get('/hero/')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('2', response.content.decode())
