@@ -1,20 +1,29 @@
-from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseNotAllowed, JsonResponse
-from django.views.decorators.csrf import csrf_exempt
+from django.http import (
+    HttpRequest,
+    HttpResponse, 
+    HttpResponseBadRequest, 
+    HttpResponseNotAllowed, 
+    JsonResponse
+)
+from django.views.decorators.csrf import ensure_csrf_cookie
 import json
 from json.decoder import JSONDecodeError
 from .models import Hero
 
-# def index(request):
-#     return HttpResponse('Hello, world!')
+def index(request: HttpRequest):
+    if 'visit_count' not in request.session:
+        request.session['visit_count'] = 1
+    else:
+        request.session['visit_count'] += 1
+    return HttpResponse(f"Hello you visited {request.session['visit_count']} times")
 
-def id(request, id):
+def id(request: HttpRequest, id):
     return HttpResponse(f'Your id is {id}!')
 
-def name(request, name):
+def name(request: HttpRequest, name):
     return HttpResponse(f'Your name is {name}!')
 
-@csrf_exempt
-def hero_list(request):
+def hero_list(request: HttpRequest):
     if request.method == 'GET':
         hero_all_list = [hero for hero in Hero.objects.all().values()]
         return JsonResponse(hero_all_list, safe=False)
@@ -31,8 +40,7 @@ def hero_list(request):
     else:
         return HttpResponseNotAllowed(['GET', 'POST'])
 
-@csrf_exempt
-def hero_info(request, id):
+def hero_info(request: HttpRequest, id):
     if request.method == 'GET':
         hero = Hero.objects.get(id=id)
         return JsonResponse({"id": hero.id, "name": hero.name, "age": hero.age})
@@ -51,3 +59,10 @@ def hero_info(request, id):
         return JsonResponse(response_dict, status=200)
     else:
         return HttpResponseNotAllowed(['GET', 'PUT'])
+
+@ensure_csrf_cookie
+def token(request: HttpRequest):
+    if request.method == 'GET':
+        return HttpResponse(status=204)
+    else:
+        return HttpResponseNotAllowed(['GET'])
