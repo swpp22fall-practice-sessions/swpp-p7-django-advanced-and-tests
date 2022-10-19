@@ -11,3 +11,10 @@ class HeroTestCase(TestCase):
 
     def test_hero_count(self):
         self.assertEqual(Hero.objects.all().count(), 3)
+
+    def test_hero_id(self) -> None:
+        client = Client()
+        response = client.get("/hero/10/")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("10", response.content.decode())
