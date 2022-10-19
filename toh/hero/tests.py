@@ -18,3 +18,14 @@ class HeroTestCase(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertIn("10", response.content.decode())
+
+    def test_count(self) -> None:
+        client = Client()
+
+        response = client.get("/hero/")
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("1", response.content.decode())
+
+        response = client.get("/hero/")
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("2", response.content.decode())
