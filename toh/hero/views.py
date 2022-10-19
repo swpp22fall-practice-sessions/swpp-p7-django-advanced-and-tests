@@ -13,6 +13,14 @@ def id(request, id):
 def name(request, name):
     return HttpResponse(f'Your name is {name}!')
 
+def index(request):
+    if 'visit_count' not in request.session:
+        request.session['visit_count'] = 1
+    else:
+        request.session['visit_count'] += 1
+    return HttpResponse('Hello, world! You visited {} times. \n'
+                        .format(request.session['visit_count']))
+
 @csrf_exempt
 def hero_list(request):
     if request.method == 'GET':
