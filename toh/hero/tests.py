@@ -18,3 +18,9 @@ class HeroTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn('1', response.content.decode())
 
+    def test_index(self):
+        client = Client()
+        response = client.get('/hero/')
+        self.assertIn('1', response.content.decode())
+        response = client.get('/hero/')
+        self.assertIn('2', response.content.decode())
