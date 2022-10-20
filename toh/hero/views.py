@@ -3,9 +3,21 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 from json.decoder import JSONDecodeError
 from .models import Hero
+from django.views.decorators.csrf import ensure_csrf_cookie
 
-# def index(request):
-#     return HttpResponse('Hello, world!')
+@ensure_csrf_cookie
+def token(request):
+    if request.method=='GET':
+        return HttpResponse(status=204)
+    else:
+        return HttpResponseNotAllowed(['GET'])
+
+def index(request):
+    if 'visit_count' not in request.session:
+        request.session['visit_count']=1
+    else:
+        request.session['visit_count']+=1
+    return HttpResponse('Hello World! You visited {} times\n'.format(request.session['visit_count']))
 
 def id(request, id):
     return HttpResponse(f'Your id is {id}!')
