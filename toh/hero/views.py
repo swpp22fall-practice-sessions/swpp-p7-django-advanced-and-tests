@@ -3,17 +3,20 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 from json.decoder import JSONDecodeError
 from .models import Hero
+from django.views.decorators.csrf import ensure_csrf_cookie
 
 # def index(request):
 #     return HttpResponse('Hello, world!')
 
+
 def id(request, id):
     return HttpResponse(f'Your id is {id}!')
+
 
 def name(request, name):
     return HttpResponse(f'Your name is {name}!')
 
-@csrf_exempt
+
 def hero_list(request):
     if request.method == 'GET':
         hero_all_list = [hero for hero in Hero.objects.all().values()]
@@ -30,6 +33,7 @@ def hero_list(request):
         return JsonResponse(response_dict, status=201)
     else:
         return HttpResponseNotAllowed(['GET', 'POST'])
+
 
 @csrf_exempt
 def hero_info(request, id):
@@ -51,3 +55,11 @@ def hero_info(request, id):
         return JsonResponse(response_dict, status=200)
     else:
         return HttpResponseNotAllowed(['GET', 'PUT'])
+
+
+@ensure_csrf_cookie
+def token(request):
+    if request.method == 'GET':
+        return HttpResponse(status=204)
+    else:
+        return HttpResponseNotAllowed(['GET'])
