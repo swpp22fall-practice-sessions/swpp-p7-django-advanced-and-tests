@@ -20,3 +20,4 @@ class HeroTestCase(TestCase):
 
         self.assertIn('1', first_response.content.decode())
         self.assertIn('2', second_response.content.decode())
+        
